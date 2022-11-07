@@ -5,6 +5,6 @@ namespace Restaurante.Services
 {
     public interface IBuscarRestaurantesService
     {
-        Task<string> Find();
+        Task<List<RestauranteDTO>> Find();
     }
 }

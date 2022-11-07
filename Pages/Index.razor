@@ -3,14 +3,20 @@
 @using Restaurante.DTOs;
 @using Plotly.Blazor;
 @using Plotly.Blazor.Traces;
+@using Microsoft.JSInterop;
+@using Newtonsoft.Json.Linq;
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Restaurantes</PageTitle>
 
-<h1>Hello, world! aaaaaaaaaa @data</h1>
+<img src="https://th.bing.com/th/id/R.b11242ae00be8979ba49803cb5c1a5c5?rik=%2brHeM5JT2dy7zg&pid=ImgRaw&r=0" width="600" height="400" />
+<hr />
+<h1>Todos os restaurantes:</h1>
 
-@data
+@foreach(var i in data)
+{
+    <p>@i.Nome</p>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
 @code{
     PlotlyChart chart;
     Config config = new Config()
@@ -18,10 +24,14 @@
             Responsive = true
         };
     Layout layout;
-    string data;
+    List<RestauranteDTO> data;
+    int restaurantes;
 
     protected override async Task OnInitializedAsync()
     {
         data = await BuscarRestaurantesSerice.Find();
+        Console.WriteLine(data.Count);
     }
+
+
 }

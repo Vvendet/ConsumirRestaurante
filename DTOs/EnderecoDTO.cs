@@ -2,7 +2,7 @@
 {
     public class EnderecoDTO
     {
-        public EnderecoDTO(string l, int n, string ci, string uf, int ce)
+        public EnderecoDTO(string l, string n, string ci, string uf, string ce)
         {
             Logradouro = l;
             Numero = n;
@@ -11,13 +11,13 @@
             Cep = ce;
         }
         public string Logradouro { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
 
         public string Cidade { get; set; }
 
         public string UF { get; set; }
 
-        public int Cep { get; set; }
+        public string Cep { get; set; }
 
 
     }
