@@ -1,9 +1,27 @@
 ﻿@page "/"
+@inject Services.IBuscarRestaurantesService BuscarRestaurantesSerice;
+@using Restaurante.DTOs;
+@using Plotly.Blazor;
+@using Plotly.Blazor.Traces;
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Hello, world! aaaaaaaaaa @data</h1>
 
-Welcome to your new app.
+@data
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    PlotlyChart chart;
+    Config config = new Config()
+        {
+            Responsive = true
+        };
+    Layout layout;
+    string data;
+
+    protected override async Task OnInitializedAsync()
+    {
+        data = await BuscarRestaurantesSerice.Find();
+    }
+}
